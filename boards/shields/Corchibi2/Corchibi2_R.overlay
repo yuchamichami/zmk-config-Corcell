@@ -1,9 +1,7 @@
 #include "corchibi2.dtsi"
 #include <dt-bindings/pinctrl/nrf-pinctrl.h>
 #include <dt-bindings/zmk/input_transform.h>
-#include <zephyr/dt-bindings/input/input-event-codes.h>
 #include <input/processors.dtsi>
-#include <input/processors/report_rate_limit.dtsi>
 
 &default_transform {
     col-offset = <6>;
@@ -22,61 +20,23 @@
 };
 
 &pinctrl {
-    spi0_default: spi0_default {
+    i2c0_default: i2c0_default {
         group1 {
-            psels = <NRF_PSEL(SPIM_SCK, 0, 10)>,
-                    <NRF_PSEL(SPIM_MOSI, 0, 9)>,
-                    <NRF_PSEL(SPIM_MISO, 0, 9)>;
+            psels = <NRF_PSEL(TWIM_SDA, 0, 9)>,
+                    <NRF_PSEL(TWIM_SCL, 0, 10)>;
         };
     };
 
-    spi0_sleep: spi0_sleep {
+    i2c0_sleep: i2c0_sleep {
         group1 {
-            psels = <NRF_PSEL(SPIM_SCK, 0, 10)>,
-                    <NRF_PSEL(SPIM_MOSI, 0, 9)>,
-                    <NRF_PSEL(SPIM_MISO, 0, 9)>;
+            psels = <NRF_PSEL(TWIM_SDA, 0, 9)>,
+                    <NRF_PSEL(TWIM_SCL, 0, 10)>;
             low-power-enable;
         };
     };
 };
 
 / {
-    pointer_accel_R: pointer_accel_R {
-        compatible = "zmk,input-processor-acceleration";
-        status = "okay";
-        #input-processor-cells = <0>;
-        input-type = <INPUT_EV_REL>;
-        codes = <INPUT_REL_X INPUT_REL_Y>;
-        sensitivity = <2000>;
-        min-factor = <1000>;
-        max-factor = <2400>;
-        speed-threshold = <850>;
-        speed-max = <3000>;
-        acceleration-exponent = <1>;
-        sensor-dpi = <1216>;
-    };
-
-    scroll_accel_R: scroll_accel_R {
-        compatible = "zmk,input-processor-acceleration";
-        status = "okay";
-        #input-processor-cells = <0>;
-        input-type = <INPUT_EV_REL>;
-        codes = <INPUT_REL_WHEEL INPUT_REL_HWHEEL>;
-        sensitivity = <1000>;
-        min-factor = <300>;
-        max-factor = <3000>;
-        speed-threshold = <600>;
-        speed-max = <4200>;
-        acceleration-exponent = <2>;
-        sensor-dpi = <1216>;
-    };
-
-    vertical_scroll_mapper_R: vertical_scroll_mapper_R {
-        compatible = "zmk,input-processor-vertical-scroll";
-        #input-processor-cells = <0>;
-        type = <INPUT_EV_REL>;
-    };
-
     auto_mouse_layer: auto_mouse_layer {
         compatible = "zmk,input-processor-temp-layer";
         #input-processor-cells = <2>;
@@ -85,56 +45,60 @@
     };
 };
 
-&trackball_listener_R {
+&trackpad_listener_R {
     status = "okay";
-    device = <&trackball_R>;
+    device = <&trackpad_R>;
     input-processors =
         <&auto_mouse_layer 4 700>,
         <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>,
-        <&pointer_accel_R>,
-        <&zip_xy_scaler 1 10>;
+        <&zip_scroll_scaler 3 1>;
 
     scroll_layer {
         layers = <5>;
         input-processors =
-            <&zip_report_rate_limit 8>,
             <&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT)>,
-            <&vertical_scroll_mapper_R>,
-            <&zip_scroll_transform 0>,
-            <&scroll_accel_R>,
-            <&zip_scroll_scaler 1 480>;
+            <&zip_xy_to_scroll_mapper>,
+            <&zip_scroll_scaler 1 3>;
     };
 };
 
-&spi0 {
+&trackpad_split_L {
     status = "okay";
-    compatible = "nordic,nrf-spim";
-    pinctrl-0 = <&spi0_default>;
-    pinctrl-1 = <&spi0_sleep>;
+};
+
+&trackpad_listener_L {
+    status = "okay";
+};
+
+&i2c0 {
+    status = "okay";
+    compatible = "nordic,nrf-twim";
+    pinctrl-0 = <&i2c0_default>;
+    pinctrl-1 = <&i2c0_sleep>;
     pinctrl-names = "default", "sleep";
+    clock-frequency = <I2C_BITRATE_FAST>;
+    #address-cells = <1>;
+    #size-cells = <0>;
 
-    trackball_R: trackball_R@0 {
-        compatible = "pixart,paw3222";
-        reg = <0>;
+    trackpad_R: iqs5xx@74 {
+        compatible = "azoteq,iqs5xx";
         status = "okay";
-        spi-max-frequency = <2000000>;
-        irq-gpios = <&gpio1 12 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-        res-cpi = <1216>;
+        reg = <0x74>;
+
+        rdy-gpios = <&gpio1 12 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
+        /* RST shares the old PAW3222 NCS connector position and is intentionally unconnected. */
+
+        one-finger-tap;
+        press-and-hold;
+        press-and-hold-time = <150>;
+        two-finger-tap;
+        scroll;
+        natural-scroll-y;
+        natural-scroll-x;
+        switch-xy;
+        bottom-beta = <5>;
+        stationary-threshold = <5>;
     };
-};
-
-&spi2 {
-    status = "disabled";
-};
-
-&trackball_listener_L {
-    status = "disabled";
-    device = <&trackball_split_L>;
-    input-processors =
-        <&zip_report_rate_limit 8>,
-        <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_Y_INVERT)>,
-        <&zip_xy_to_scroll_mapper>,
-        <&zip_scroll_scaler 1 4>;
 };
 
 &encoder {

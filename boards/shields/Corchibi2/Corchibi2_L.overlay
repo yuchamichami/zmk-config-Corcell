@@ -17,43 +17,56 @@
 };
 
 &pinctrl {
-    spi0_default: spi0_default {
+    i2c0_default: i2c0_default {
         group1 {
-            psels = <NRF_PSEL(SPIM_SCK, 0, 10)>,
-                    <NRF_PSEL(SPIM_MOSI, 0, 9)>,
-                    <NRF_PSEL(SPIM_MISO, 0, 9)>;
+            psels = <NRF_PSEL(TWIM_SDA, 0, 9)>,
+                    <NRF_PSEL(TWIM_SCL, 0, 10)>;
         };
     };
 
-    spi0_sleep: spi0_sleep {
+    i2c0_sleep: i2c0_sleep {
         group1 {
-            psels = <NRF_PSEL(SPIM_SCK, 0, 10)>,
-                    <NRF_PSEL(SPIM_MOSI, 0, 9)>,
-                    <NRF_PSEL(SPIM_MISO, 0, 9)>;
+            psels = <NRF_PSEL(TWIM_SDA, 0, 9)>,
+                    <NRF_PSEL(TWIM_SCL, 0, 10)>;
             low-power-enable;
         };
     };
 };
 
-&spi0 {
+&i2c0 {
     status = "okay";
-    compatible = "nordic,nrf-spim";
-    pinctrl-0 = <&spi0_default>;
-    pinctrl-1 = <&spi0_sleep>;
+    compatible = "nordic,nrf-twim";
+    pinctrl-0 = <&i2c0_default>;
+    pinctrl-1 = <&i2c0_sleep>;
     pinctrl-names = "default", "sleep";
+    clock-frequency = <I2C_BITRATE_FAST>;
+    #address-cells = <1>;
+    #size-cells = <0>;
 
-    trackball_L: trackball_L@0 {
-        compatible = "pixart,paw3222";
-        reg = <0>;
+    trackpad_L: iqs5xx@74 {
+        compatible = "azoteq,iqs5xx";
         status = "okay";
-        spi-max-frequency = <2000000>;
-        irq-gpios = <&gpio1 12 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-        res-cpi = <1216>;
+        reg = <0x74>;
+
+        rdy-gpios = <&gpio1 12 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
+        /* RST shares the old PAW3222 NCS connector position and is intentionally unconnected. */
+
+        one-finger-tap;
+        press-and-hold;
+        press-and-hold-time = <150>;
+        two-finger-tap;
+        scroll;
+        natural-scroll-y;
+        natural-scroll-x;
+        switch-xy;
+        bottom-beta = <5>;
+        stationary-threshold = <5>;
     };
 };
 
-&trackball_split_L {
-    device = <&trackball_L>;
+&trackpad_split_L {
+    status = "okay";
+    device = <&trackpad_L>;
 };
 
 &encoder {

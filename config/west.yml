@@ -2,22 +2,12 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    - name: sekigon-gonnoc
-      url-base: https://github.com/sekigon-gonnoc
-    - name: badjeff
-      url-base: https://github.com/badjeff
-    - name: nuovotaka
-      url-base: https://github.com/nuovotaka
+    - name: nykxx
+      url-base: https://github.com/nykxx
   projects:
-    - name: zmk-driver-paw3222
-      remote: sekigon-gonnoc
-      revision: df652881be2520bde4f64ab6ca35e4c5708f4f9b
-    - name: zmk-input-processor-report-rate-limit
-      remote: badjeff
-      revision: f43f37aae7aaa7bf0ec4d432683b873a7e3a8efa
-    - name: zmk-pointing-acceleration-alpha
-      remote: nuovotaka
-      revision: main
+    - name: zmk-driver-azoteq-iqs5xx
+      remote: nykxx
+      revision: 27321f0232b50f0af31eb27ff97d539933467ea4
     - name: zmk
       remote: zmkfirmware
       revision: 354cff9

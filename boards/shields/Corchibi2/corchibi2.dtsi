@@ -25,24 +25,24 @@
         #address-cells = <1>;
         #size-cells = <0>;
 
-        trackball_split_L: trackball_split_L@0 {
+        trackpad_split_L: trackpad_split_L@0 {
             compatible = "zmk,input-split";
             reg = <0>;
             status = "disabled";
         };
     };
 
-    trackball_listener_L: trackball_listener_L {
+    trackpad_listener_L: trackpad_listener_L {
         compatible = "zmk,input-listener";
         status = "disabled";
-        device = <&trackball_split_L>;
+        device = <&trackpad_split_L>;
         input-processors =
             <&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT)>,
             <&zip_xy_to_scroll_mapper>,
             <&zip_scroll_scaler 1 4>;
     };
 
-    trackball_listener_R: trackball_listener_R {
+    trackpad_listener_R: trackpad_listener_R {
         compatible = "zmk,input-listener";
         status = "disabled";
     };
