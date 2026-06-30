@@ -1,0 +1,19 @@
+#include "../Corchibi2/Corchibi2_R.overlay"
+
+/ {
+    twist_motion_debug: twist_motion_debug {
+        compatible = "zmk,input-processor-motion-debug";
+        #input-processor-cells = <0>;
+        type = <INPUT_EV_REL>;
+        min-interval-ms = <0>;
+    };
+};
+
+&trackball_listener_R {
+    input-processors =
+        <&twist_motion_debug>,
+        <&auto_mouse_layer 4 700>,
+        <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>,
+        <&pointer_accel_R>,
+        <&zip_xy_scaler 1 10>;
+};

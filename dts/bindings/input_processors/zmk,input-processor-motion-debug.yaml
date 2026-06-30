@@ -1,0 +1,21 @@
+# Copyright (c) 2026
+# SPDX-License-Identifier: MIT
+
+description: Input processor that logs raw relative X/Y motion without modifying events
+
+compatible: "zmk,input-processor-motion-debug"
+
+include: ip_zero_param.yaml
+
+properties:
+  type:
+    type: int
+
+  min-interval-ms:
+    type: int
+    default: 0
+    description: Minimum time between log lines. Use 0 to log every synced motion report.
+
+  log-zero:
+    type: boolean
+    description: Also log reports whose accumulated X and Y are both zero.

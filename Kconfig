@@ -5,6 +5,11 @@ config ZMK_INPUT_PROCESSOR_VERTICAL_SCROLL
     default y
     depends on DT_HAS_ZMK_INPUT_PROCESSOR_VERTICAL_SCROLL_ENABLED
 
+config ZMK_INPUT_PROCESSOR_MOTION_DEBUG
+    bool "Relative motion debug input processor"
+    default y
+    depends on DT_HAS_ZMK_INPUT_PROCESSOR_MOTION_DEBUG_ENABLED
+
 endif
 
 DT_COMPAT_CORCHIBI2_BATTERY_VOLTAGE_DIVIDER := corchibi2,battery-voltage-divider
