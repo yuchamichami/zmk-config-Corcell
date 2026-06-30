@@ -15,6 +15,43 @@ ZMK ファームウェアです。
 - ロータリーエンコーダーは `RE_A=P0.04`、`RE_B=P0.05` を使います。
 - 乾電池の入力電圧は ADC0 / `P0.02` で読みます。
 
+## IQS5xx トラックパッド実験ブランチ
+
+`experiment/trackpad-iqs5xx` ブランチでは、PAW3222 の代わりに Azoteq IQS5xx 系
+トラックパッドを使う構成を試しています。
+
+- `SDA=P0.09`、`SCL=P0.10`、`RDY=P1.12` です。
+- `RST` は PAW3222 の NCS と同じコネクタ位置ですが、未接続のためファームウェアでは使いません。
+- I2C アドレスは `0x74` です。
+- 通常のビルド対象は `Corchibi2_R`、`Corchibi2_L`、`settings_reset` です。
+
+### トラックパッドのデバッグ
+
+トラックパッドが反応しない場合は、`Corchibi2_R_trackpad_debug` を右手側へ書き込むと
+USBシリアルログで状態を確認できます。
+
+1. `Corchibi2_R_trackpad_debug-xiao_ble.uf2` を右手側に書き込みます。
+2. 右手側をUSB接続します。
+3. macOS でシリアルポートを確認します。
+
+```sh
+ls /dev/tty.usbmodem*
+```
+
+4. 見つかったポートを開きます。
+
+```sh
+screen /dev/tty.usbmodemXXXX 115200
+```
+
+ログでは次の行を確認します。
+
+- `IQS5xx debug probe start`: デバッグプローブが起動しています。
+- `RDY sample[...]`: `RDY=P1.12` の入力状態です。
+- `probe addr=0x74 ok`: I2C アドレス `0x74` でトラックパッドが応答しています。
+- `probe addr=0x74 no response`: 電源、SDA/SCL、I2C アドレス、RST 周辺を疑います。
+- `trackpad_event ...`: トラックパッド入力がZMKの入力処理まで届いています。
+
 ## 電源設定
 
 - ZMK sleep を有効にしています。

@@ -5,7 +5,18 @@ config ZMK_INPUT_PROCESSOR_VERTICAL_SCROLL
     default y
     depends on DT_HAS_ZMK_INPUT_PROCESSOR_VERTICAL_SCROLL_ENABLED
 
+config ZMK_INPUT_PROCESSOR_EVENT_DEBUG
+    bool "Input event debug logger"
+    default y
+    depends on DT_HAS_ZMK_INPUT_PROCESSOR_EVENT_DEBUG_ENABLED
+
 endif
+
+config CORCHIBI2_IQS5XX_DEBUG_PROBE
+    bool "Corchibi2 IQS5xx debug probe"
+    depends on I2C
+    help
+        Log IQS5xx I2C probe results and RDY pin state during boot.
 
 DT_COMPAT_CORCHIBI2_BATTERY_VOLTAGE_DIVIDER := corchibi2,battery-voltage-divider
 
