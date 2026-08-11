@@ -1,7 +1,7 @@
-if SHIELD_CORCHIBI2_R_TRACKPAD_DEBUG
+if SHIELD_CORELL_R_TRACKPAD_DEBUG
 
 config ZMK_KEYBOARD_NAME
-    default "Corchibi2 TPDBG"
+    default "Corell TPDBG"
 
 config ZMK_SPLIT
     default y

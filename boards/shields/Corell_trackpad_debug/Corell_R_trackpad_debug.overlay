@@ -1,8 +1,8 @@
-#include "../Corchibi2/Corchibi2_R.overlay"
+#include "../Corell/Corell_R.overlay"
 
 / {
     chosen {
-        corchibi2,debug-trackpad = &trackpad_R;
+        corell,debug-trackpad = &trackpad_R;
     };
 
     trackpad_event_debug: trackpad_event_debug {

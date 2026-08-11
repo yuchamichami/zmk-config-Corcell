@@ -1,11 +1,11 @@
 /*
  * Copyright (c) 2020 The ZMK Contributors
- * Copyright (c) 2026 The Corchibi2 contributors
+ * Copyright (c) 2026 The Corell contributors
  *
  * SPDX-License-Identifier: MIT
  */
 
-#define DT_DRV_COMPAT corchibi2_battery_voltage_divider
+#define DT_DRV_COMPAT corell_battery_voltage_divider
 
 #include <errno.h>
 #include <stddef.h>
@@ -22,18 +22,18 @@
 
 LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 
-struct corchibi2_battery_value {
+struct corell_battery_value {
     uint16_t adc_raw;
     uint16_t millivolts;
     uint8_t state_of_charge;
 };
 
-struct corchibi2_io_channel_config {
+struct corell_io_channel_config {
     uint8_t channel;
 };
 
-struct corchibi2_bvd_config {
-    struct corchibi2_io_channel_config io_channel;
+struct corell_bvd_config {
+    struct corell_io_channel_config io_channel;
     struct gpio_dt_spec power;
     uint32_t output_ohm;
     uint32_t full_ohm;
@@ -41,14 +41,14 @@ struct corchibi2_bvd_config {
     size_t mv_to_pct_thresholds_len;
 };
 
-struct corchibi2_bvd_data {
+struct corell_bvd_data {
     const struct device *adc;
     struct adc_channel_cfg acc;
     struct adc_sequence as;
-    struct corchibi2_battery_value value;
+    struct corell_battery_value value;
 };
 
-static uint8_t corchibi2_bvd_mv_to_pct(const struct corchibi2_bvd_config *cfg,
+static uint8_t corell_bvd_mv_to_pct(const struct corell_bvd_config *cfg,
                                        uint16_t millivolts) {
     const uint16_t *thresholds = cfg->mv_to_pct_thresholds;
     size_t last = cfg->mv_to_pct_thresholds_len - 1;
@@ -77,7 +77,7 @@ static uint8_t corchibi2_bvd_mv_to_pct(const struct corchibi2_bvd_config *cfg,
     return 100;
 }
 
-static int corchibi2_battery_channel_get(const struct corchibi2_battery_value *value,
+static int corell_battery_channel_get(const struct corell_battery_value *value,
                                          enum sensor_channel chan,
                                          struct sensor_value *val_out) {
     switch (chan) {
@@ -98,9 +98,9 @@ static int corchibi2_battery_channel_get(const struct corchibi2_battery_value *v
     return 0;
 }
 
-static int corchibi2_bvd_sample_fetch(const struct device *dev, enum sensor_channel chan) {
-    struct corchibi2_bvd_data *drv_data = dev->data;
-    const struct corchibi2_bvd_config *drv_cfg = dev->config;
+static int corell_bvd_sample_fetch(const struct device *dev, enum sensor_channel chan) {
+    struct corell_bvd_data *drv_data = dev->data;
+    const struct corell_bvd_config *drv_cfg = dev->config;
     struct adc_sequence *as = &drv_data->as;
 
     if (chan != SENSOR_CHAN_GAUGE_VOLTAGE && chan != SENSOR_CHAN_GAUGE_STATE_OF_CHARGE &&
@@ -131,7 +131,7 @@ static int corchibi2_bvd_sample_fetch(const struct device *dev, enum sensor_chan
                               &val);
 
         uint16_t millivolts = val * (uint64_t)drv_cfg->full_ohm / drv_cfg->output_ohm;
-        uint8_t percent = corchibi2_bvd_mv_to_pct(drv_cfg, millivolts);
+        uint8_t percent = corell_bvd_mv_to_pct(drv_cfg, millivolts);
 
         LOG_DBG("ADC raw %d ~ %d mV => %d mV, %d%%", drv_data->value.adc_raw, val, millivolts,
                 percent);
@@ -153,20 +153,20 @@ static int corchibi2_bvd_sample_fetch(const struct device *dev, enum sensor_chan
     return rc;
 }
 
-static int corchibi2_bvd_channel_get(const struct device *dev, enum sensor_channel chan,
+static int corell_bvd_channel_get(const struct device *dev, enum sensor_channel chan,
                                      struct sensor_value *val) {
-    struct corchibi2_bvd_data *drv_data = dev->data;
-    return corchibi2_battery_channel_get(&drv_data->value, chan, val);
+    struct corell_bvd_data *drv_data = dev->data;
+    return corell_battery_channel_get(&drv_data->value, chan, val);
 }
 
-static const struct sensor_driver_api corchibi2_bvd_api = {
-    .sample_fetch = corchibi2_bvd_sample_fetch,
-    .channel_get = corchibi2_bvd_channel_get,
+static const struct sensor_driver_api corell_bvd_api = {
+    .sample_fetch = corell_bvd_sample_fetch,
+    .channel_get = corell_bvd_channel_get,
 };
 
-static int corchibi2_bvd_init(const struct device *dev) {
-    struct corchibi2_bvd_data *drv_data = dev->data;
-    const struct corchibi2_bvd_config *drv_cfg = dev->config;
+static int corell_bvd_init(const struct device *dev) {
+    struct corell_bvd_data *drv_data = dev->data;
+    const struct corell_bvd_config *drv_cfg = dev->config;
 
     if (drv_data->adc == NULL) {
         LOG_ERR("ADC failed to retrieve ADC driver");
@@ -213,13 +213,13 @@ static int corchibi2_bvd_init(const struct device *dev) {
     return rc;
 }
 
-static struct corchibi2_bvd_data corchibi2_bvd_data = {
+static struct corell_bvd_data corell_bvd_data = {
     .adc = DEVICE_DT_GET(DT_IO_CHANNELS_CTLR(DT_DRV_INST(0)))};
 
-static const uint16_t corchibi2_bvd_mv_to_pct_thresholds[] =
+static const uint16_t corell_bvd_mv_to_pct_thresholds[] =
     DT_INST_PROP(0, mv_to_pct_thresholds);
 
-static const struct corchibi2_bvd_config corchibi2_bvd_cfg = {
+static const struct corell_bvd_config corell_bvd_cfg = {
     .io_channel =
         {
             DT_IO_CHANNELS_INPUT(DT_DRV_INST(0)),
@@ -229,9 +229,9 @@ static const struct corchibi2_bvd_config corchibi2_bvd_cfg = {
 #endif
     .output_ohm = DT_INST_PROP(0, output_ohms),
     .full_ohm = DT_INST_PROP(0, full_ohms),
-    .mv_to_pct_thresholds = corchibi2_bvd_mv_to_pct_thresholds,
-    .mv_to_pct_thresholds_len = ARRAY_SIZE(corchibi2_bvd_mv_to_pct_thresholds),
+    .mv_to_pct_thresholds = corell_bvd_mv_to_pct_thresholds,
+    .mv_to_pct_thresholds_len = ARRAY_SIZE(corell_bvd_mv_to_pct_thresholds),
 };
 
-DEVICE_DT_INST_DEFINE(0, &corchibi2_bvd_init, NULL, &corchibi2_bvd_data, &corchibi2_bvd_cfg,
-                      POST_KERNEL, CONFIG_SENSOR_INIT_PRIORITY, &corchibi2_bvd_api);
+DEVICE_DT_INST_DEFINE(0, &corell_bvd_init, NULL, &corell_bvd_data, &corell_bvd_cfg,
+                      POST_KERNEL, CONFIG_SENSOR_INIT_PRIORITY, &corell_bvd_api);

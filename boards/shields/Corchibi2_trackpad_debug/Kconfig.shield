@@ -1,2 +1,0 @@
-config SHIELD_CORCHIBI2_R_TRACKPAD_DEBUG
-    def_bool $(shields_list_contains,Corchibi2_R_trackpad_debug)

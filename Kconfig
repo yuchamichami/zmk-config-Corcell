@@ -12,19 +12,19 @@ config ZMK_INPUT_PROCESSOR_EVENT_DEBUG
 
 endif
 
-config CORCHIBI2_IQS5XX_DEBUG_PROBE
-    bool "Corchibi2 IQS5xx debug probe"
+config CORELL_IQS5XX_DEBUG_PROBE
+    bool "Corell IQS5xx debug probe"
     depends on I2C
     help
         Log IQS5xx I2C probe results and RDY pin state during boot.
 
-DT_COMPAT_CORCHIBI2_BATTERY_VOLTAGE_DIVIDER := corchibi2,battery-voltage-divider
+DT_COMPAT_CORELL_BATTERY_VOLTAGE_DIVIDER := corell,battery-voltage-divider
 
-config CORCHIBI2_BATTERY_VOLTAGE_DIVIDER
+config CORELL_BATTERY_VOLTAGE_DIVIDER
     bool
-    default $(dt_compat_enabled,$(DT_COMPAT_CORCHIBI2_BATTERY_VOLTAGE_DIVIDER))
+    default $(dt_compat_enabled,$(DT_COMPAT_CORELL_BATTERY_VOLTAGE_DIVIDER))
     select ADC
     select ZMK_BATTERY
     depends on SENSOR
     help
-        Enable Corchibi2 dry-cell voltage divider battery monitoring.
+        Enable Corell dry-cell voltage divider battery monitoring.

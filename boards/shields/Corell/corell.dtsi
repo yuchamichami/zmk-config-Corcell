@@ -136,7 +136,7 @@
 };
 
 &vbatt {
-    compatible = "corchibi2,battery-voltage-divider";
+    compatible = "corell,battery-voltage-divider";
     io-channels = <&adc 0>;
     /delete-property/ power-gpios;
     output-ohms = <470000>;

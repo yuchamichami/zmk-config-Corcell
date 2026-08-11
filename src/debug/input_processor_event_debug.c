@@ -13,7 +13,7 @@
 
 #include <drivers/input_processor.h>
 
-LOG_MODULE_REGISTER(corchibi2_event_debug, LOG_LEVEL_INF);
+LOG_MODULE_REGISTER(corell_event_debug, LOG_LEVEL_INF);
 
 struct event_debug_config {
     uint32_t min_interval_ms;

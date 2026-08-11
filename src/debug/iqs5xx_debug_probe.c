@@ -12,16 +12,16 @@
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
 
-LOG_MODULE_REGISTER(corchibi2_iqs5xx_probe, LOG_LEVEL_INF);
+LOG_MODULE_REGISTER(corell_iqs5xx_probe, LOG_LEVEL_INF);
 
-#if !DT_HAS_CHOSEN(corchibi2_debug_trackpad)
-#error "CONFIG_CORCHIBI2_IQS5XX_DEBUG_PROBE requires chosen corchibi2,debug-trackpad"
+#if !DT_HAS_CHOSEN(corell_debug_trackpad)
+#error "CONFIG_CORELL_IQS5XX_DEBUG_PROBE requires chosen corell,debug-trackpad"
 #endif
 
-#define TRACKPAD_NODE DT_CHOSEN(corchibi2_debug_trackpad)
+#define TRACKPAD_NODE DT_CHOSEN(corell_debug_trackpad)
 
 #if !DT_NODE_HAS_STATUS(TRACKPAD_NODE, okay)
-#error "chosen corchibi2,debug-trackpad must point to an enabled IQS5xx node"
+#error "chosen corell,debug-trackpad must point to an enabled IQS5xx node"
 #endif
 
 static const struct i2c_dt_spec trackpad_i2c = I2C_DT_SPEC_GET(TRACKPAD_NODE);
