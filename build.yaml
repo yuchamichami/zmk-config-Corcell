@@ -1,10 +1,10 @@
 include:
   - board: xiao_ble
-    shield: Corchibi2_R
+    shield: Corell_R
   - board: xiao_ble
-    shield: Corchibi2_L
+    shield: Corell_L
   - board: xiao_ble
     shield: settings_reset
   - board: xiao_ble
-    shield: Corchibi2_R_twist_debug
+    shield: Corell_R_twist_debug
     snippet: zmk-usb-logging

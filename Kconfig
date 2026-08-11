@@ -12,13 +12,13 @@ config ZMK_INPUT_PROCESSOR_MOTION_DEBUG
 
 endif
 
-DT_COMPAT_CORCHIBI2_BATTERY_VOLTAGE_DIVIDER := corchibi2,battery-voltage-divider
+DT_COMPAT_CORELL_BATTERY_VOLTAGE_DIVIDER := corell,battery-voltage-divider
 
-config CORCHIBI2_BATTERY_VOLTAGE_DIVIDER
+config CORELL_BATTERY_VOLTAGE_DIVIDER
     bool
-    default $(dt_compat_enabled,$(DT_COMPAT_CORCHIBI2_BATTERY_VOLTAGE_DIVIDER))
+    default $(dt_compat_enabled,$(DT_COMPAT_CORELL_BATTERY_VOLTAGE_DIVIDER))
     select ADC
     select ZMK_BATTERY
     depends on SENSOR
     help
-        Enable Corchibi2 dry-cell voltage divider battery monitoring.
+        Enable Corell dry-cell voltage divider battery monitoring.

@@ -1,4 +1,4 @@
-#include "../Corchibi2/Corchibi2_R.overlay"
+#include "../Corell/Corell_R.overlay"
 
 / {
     twist_motion_debug: twist_motion_debug {

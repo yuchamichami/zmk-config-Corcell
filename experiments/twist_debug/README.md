@@ -1,7 +1,7 @@
 # Twist debug experiment
 
 PAW3222 の生の相対移動量を USB serial log に出す実験用ファームです。
-通常の `Corchibi2_R` とは別に、`Corchibi2_R_twist_debug` shield として用意しています。
+通常の `Corell_R` とは別に、`Corell_R_twist_debug` shield として用意しています。
 
 ## 目的
 
@@ -15,11 +15,11 @@ twist_raw seq=12 dt_ms=15 x=-2 y=18 abs_x=2 abs_y=18 dom=y
 ## ビルド
 
 ```sh
-west build -s zmk/app -d .build/Corchibi2_R_twist_debug-xiao_ble \
+west build -s zmk/app -d .build/Corell_R_twist_debug-xiao_ble \
   -b xiao_ble --pristine always -- \
-  -DZMK_CONFIG="$PWD/config/zmk-config-Corchibi2/config" \
-  -DZMK_EXTRA_MODULES="$PWD/config/zmk-config-Corchibi2" \
-  -DSHIELD=Corchibi2_R_twist_debug \
+  -DZMK_CONFIG="$PWD/config/zmk-config-Corell/config" \
+  -DZMK_EXTRA_MODULES="$PWD/config/zmk-config-Corell" \
+  -DSHIELD=Corell_R_twist_debug \
   -DSNIPPET=zmk-usb-logging
 ```
 

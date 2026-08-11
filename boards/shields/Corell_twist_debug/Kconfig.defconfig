@@ -1,7 +1,7 @@
-if SHIELD_CORCHIBI2_R_TWIST_DEBUG
+if SHIELD_CORELL_R_TWIST_DEBUG
 
 config ZMK_KEYBOARD_NAME
-    default "Corchibi2 DBG"
+    default "Corell DBG"
 
 config ZMK_SPLIT
     default y

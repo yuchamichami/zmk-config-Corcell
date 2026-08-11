@@ -16,7 +16,7 @@
 
 #include <drivers/input_processor.h>
 
-LOG_MODULE_REGISTER(corchibi2_motion_debug, LOG_LEVEL_INF);
+LOG_MODULE_REGISTER(corell_motion_debug, LOG_LEVEL_INF);
 
 struct motion_debug_config {
     uint8_t type;
