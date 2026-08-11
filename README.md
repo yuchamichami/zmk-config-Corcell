@@ -66,18 +66,7 @@ screen /dev/tty.usbmodemXXXX 115200
 - 分圧抵抗は `output-ohms = 470k`、`full-ohms = 1M + 470k` です。
 - 1 セル Ni-MH 向けの millivolt-to-percent thresholds で Bluetooth の battery level として報告します。
 
-## 3D データ
-
-ケースなどの 3D モデルは `3D_data/` にあります。
-
-3D モデルはファームウェアとは別ライセンスです。MIT License の対象ではありません。
-商用利用はできません。改変は私的利用に限ります。改変した 3D モデルや派生物の共有、配布、販売はできません。
-
-詳しくは `3D_data/README.md` と `3D_data/LICENSE.md` を確認してください。
-
 ## ライセンス
 
-このリポジトリは、ファームウェアと 3D モデルでライセンスが分かれています。
-
-- ファームウェアのソースコード、ZMK 設定ファイル、`3D_data/` 外のドキュメントは MIT License です。詳しくは `LICENSE` を確認してください。
-- `3D_data/` 以下の 3D モデルファイルは CC BY-NC-ND 4.0 です。商用利用はできません。改変は私的利用に限ります。改変したデータや派生物の共有、配布、販売はできません。詳しくは `3D_data/LICENSE.md` を確認してください。
+このリポジトリ内のファームウェアソースコード、ZMK 設定ファイル、ドキュメントは MIT License です。
+詳しくは `LICENSE` を確認してください。
