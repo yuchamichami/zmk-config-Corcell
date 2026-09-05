@@ -24,6 +24,8 @@ manifest:
       remote: yuchamichami
       revision: fc946760e7f870e512be8fce7a26cc5c004a8663
     - name: zmk-driver-azoteq-iqs5xx
+      remote: nykxx
+      revision: 27321f0232b50f0af31eb27ff97d539933467ea4
     - name: zmk-feature-module-physical-layout
     - name: zmk
       revision: main+dya
