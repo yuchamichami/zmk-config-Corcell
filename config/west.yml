@@ -23,6 +23,8 @@ manifest:
       remote: yuchamichami
       revision: fc946760e7f870e512be8fce7a26cc5c004a8663
     - name: zmk-driver-lenotp
+      remote: yuchamichami
+      revision: 3e5e9926d243ed09d62a833c5664278e9fe5a41b
     - name: zmk-feature-module-physical-layout
     - name: zmk
       revision: main+dya
