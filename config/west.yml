@@ -10,17 +10,20 @@ manifest:
       url-base: https://github.com/zmkfirmware
     - name: sekigon-gonnoc
       url-base: https://github.com/sekigon-gonnoc
+    - name: yuchamichami
+      url-base: https://github.com/yuchamichami
     - name: nykxx
-      url-base: https://github.com/nykxx
   projects:
     - name: zmk-west-commands
       import: true
+    # Fork of sekigon-gonnoc/zmk-driver-paw3222. The only change is dropping
+    # the power-down write on suspend: waking from soft-off is a reset, the
+    # sensor keeps its supply across it, and with NCS strapped to GND nothing
+    # can bring it back out of power-down short of pulling the cell.
     - name: zmk-driver-paw3222
-      remote: sekigon-gonnoc
-      revision: df652881be2520bde4f64ab6ca35e4c5708f4f9b
+      remote: yuchamichami
+      revision: fc946760e7f870e512be8fce7a26cc5c004a8663
     - name: zmk-driver-azoteq-iqs5xx
-      remote: nykxx
-      revision: 27321f0232b50f0af31eb27ff97d539933467ea4
     - name: zmk-feature-module-physical-layout
     - name: zmk
       revision: main+dya
