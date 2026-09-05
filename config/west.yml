@@ -13,6 +13,7 @@ manifest:
     - name: yuchamichami
       url-base: https://github.com/yuchamichami
     - name: nykxx
+      url-base: https://github.com/nykxx
   projects:
     - name: zmk-west-commands
       import: true
