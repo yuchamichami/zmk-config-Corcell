@@ -260,9 +260,9 @@ parse_config:
   zmk_additional_includes: []
   # ----- Raw bindings for encoders/trackball -----
   raw_binding_map:
-    '&layer_1_signal': { tap: 'EISUU', hold: 'L1' }
-    '&layer_2_signal': { tap: 'KANA', hold: 'L2' }
-    '&layer_3_signal': { tap: 'HENKAN', hold: 'L3' }
+    '&layer_1_signal': { tap: 'F22', hold: 'L1' }
+    '&layer_2_signal': { tap: 'F23', hold: 'L2' }
+    '&layer_3_signal': { tap: 'F24', hold: 'L3' }
     '&TB1_mouse':  { tap: '$$trackball_19mm$$', hold: 'Mouse' }
     '&TB1_scroll':  { tap: '$$trackball_19mm$$', hold: 'Scroll' }
     '&TB2_mouse':  { tap: '$$trackball_14mm$$', hold: 'Mouse' }
