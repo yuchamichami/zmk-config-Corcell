@@ -379,13 +379,13 @@ text { fill: #000000; }
 <g transform="translate(218, 231)" class="key keypos-41">
 <rect rx="6" ry="6" x="-27" y="-27" width="54" height="54" class="key side"/>
 <rect rx="8" ry="8" x="-21" y="-21" width="42" height="42" class="key"/>
-<text x="0" y="0" class="key tap">EISUU</text>
+<text x="0" y="0" class="key tap">F22</text>
 <text x="0" y="25" class="key hold">L1</text>
 </g>
 <g transform="translate(292, 237) rotate(11.93)" class="key keypos-42">
 <rect rx="6" ry="6" x="-27" y="-27" width="54" height="54" class="key side"/>
 <rect rx="8" ry="8" x="-21" y="-21" width="42" height="42" class="key"/>
-<text x="0" y="0" class="key tap">KANA</text>
+<text x="0" y="0" class="key tap">F23</text>
 <text x="0" y="25" class="key hold">L2</text>
 </g>
 <g transform="translate(365, 266) rotate(23.0)" class="key keypos-43">
@@ -401,7 +401,7 @@ text { fill: #000000; }
 <g transform="translate(604, 237) rotate(-11.93)" class="key keypos-45">
 <rect rx="6" ry="6" x="-27" y="-27" width="54" height="54" class="key side"/>
 <rect rx="8" ry="8" x="-21" y="-21" width="42" height="42" class="key"/>
-<text x="0" y="0" class="key tap">HENKAN</text>
+<text x="0" y="0" class="key tap">F24</text>
 <text x="0" y="25" class="key hold">L3</text>
 </g>
 <g transform="translate(678, 231)" class="key keypos-46">
