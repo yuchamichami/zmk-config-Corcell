@@ -42,11 +42,11 @@ layers:
   - LCTRL
   - LGUI
   - LALT
-  - {t: F22, h: L1}
-  - {t: F23, h: L2}
+  - {t: F16, h: L1}
+  - {t: F17, h: L2}
   - SPACE
   - SPACE
-  - {t: F24, h: L3}
+  - {t: F18, h: L3}
   - {t: A, h: '5'}
   - LEFT
   - DOWN
