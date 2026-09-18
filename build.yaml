@@ -15,3 +15,12 @@ include:
     shield: corcell_r
     artifact-name: Corcell_R-dya-sensor-baseline-xiao_ble_zmk
     snippet: corcell-right-slot1-paw3222 studio-rpc-usb-uart corcell-sensor-baseline
+  # Temporary sleep diagnostics; the standard artifacts retain 15 minutes.
+  - board: xiao_ble/nrf52840/zmk
+    shield: corcell_r
+    artifact-name: Corcell_R-dya-sleep-test-30s-xiao_ble_zmk
+    snippet: corcell-right-slot1-paw3222 studio-rpc-usb-uart corcell-sleep-test-30s
+  - board: xiao_ble/nrf52840/zmk
+    shield: corcell_l
+    artifact-name: Corcell_L-dya-sleep-test-30s-xiao_ble_zmk
+    snippet: corcell-left-slot1-paw3222 corcell-sleep-test-30s

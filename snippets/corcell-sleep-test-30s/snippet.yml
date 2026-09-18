@@ -1,0 +1,3 @@
+name: corcell-sleep-test-30s
+append:
+  EXTRA_CONF_FILE: sleep-test.conf
