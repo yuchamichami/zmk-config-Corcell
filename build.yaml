@@ -10,3 +10,8 @@ include:
   - board: xiao_ble/nrf52840/zmk
     shield: settings_reset
     artifact-name: settings_reset-dya-studio-xiao_ble_zmk
+  # Diagnostic right half: same DYA firmware, main's sensor processing only.
+  - board: xiao_ble/nrf52840/zmk
+    shield: corcell_r
+    artifact-name: Corcell_R-dya-sensor-baseline-xiao_ble_zmk
+    snippet: corcell-right-slot1-paw3222 studio-rpc-usb-uart corcell-sensor-baseline
