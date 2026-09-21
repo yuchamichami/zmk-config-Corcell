@@ -24,3 +24,12 @@ include:
     shield: corcell_l
     artifact-name: Corcell_L-dya-sleep-test-30s-xiao_ble_zmk
     snippet: corcell-left-slot1-paw3222 corcell-sleep-test-30s
+  # Power-on comparison: no EC11 GPIO ownership, NCS remains tied to GND.
+  - board: xiao_ble/nrf52840/zmk
+    shield: corcell_r
+    artifact-name: Corcell_R-dya-no-encoder-xiao_ble_zmk
+    snippet: corcell-right-slot1-paw3222 studio-rpc-usb-uart corcell-no-encoder
+  - board: xiao_ble/nrf52840/zmk
+    shield: corcell_l
+    artifact-name: Corcell_L-dya-no-encoder-xiao_ble_zmk
+    snippet: corcell-left-slot1-paw3222 corcell-no-encoder

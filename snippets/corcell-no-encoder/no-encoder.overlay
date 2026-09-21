@@ -1,0 +1,11 @@
+/* Leave RE_A/P0.04 and RE_B/P0.05 unused; NCS stays strapped to GND. */
+&encoder {
+    status = "disabled";
+    /delete-property/ a-gpios;
+    /delete-property/ b-gpios;
+};
+
+&sensors {
+    status = "disabled";
+    /delete-property/ sensors;
+};
