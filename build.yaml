@@ -1,12 +1,20 @@
 include:
   - board: xiao_ble/nrf52840/zmk
     shield: corcell_r
-    artifact-name: Corcell_R-xiao_ble_zmk
-    snippet: corcell-right-slot1-paw3222
+    artifact-name: Corcell_R-no-dya-sensor-off-xiao_ble_zmk
+    snippet: corcell-right-slot1-paw3222 corcell-no-encoder corcell-sensor-off
   - board: xiao_ble/nrf52840/zmk
     shield: corcell_l
-    artifact-name: Corcell_L-xiao_ble_zmk
-    snippet: corcell-left-slot1-paw3222
+    artifact-name: Corcell_L-no-dya-sensor-off-xiao_ble_zmk
+    snippet: corcell-left-slot1-paw3222 corcell-no-encoder corcell-sensor-off
+  - board: xiao_ble/nrf52840/zmk
+    shield: corcell_r
+    artifact-name: Corcell_R-no-dya-sensor-on-xiao_ble_zmk
+    snippet: corcell-right-slot1-paw3222 corcell-no-encoder
+  - board: xiao_ble/nrf52840/zmk
+    shield: corcell_l
+    artifact-name: Corcell_L-no-dya-sensor-on-xiao_ble_zmk
+    snippet: corcell-left-slot1-paw3222 corcell-no-encoder
   - board: xiao_ble/nrf52840/zmk
     shield: settings_reset
-    artifact-name: settings_reset-xiao_ble_zmk
+    artifact-name: settings_reset-no-dya-xiao_ble_zmk
