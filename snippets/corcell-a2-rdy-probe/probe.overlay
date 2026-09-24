@@ -1,0 +1,4 @@
+#include "../corcell-right-slot1-iqs9151-a2/a2.overlay"
+
+/* No input consumer or sensor driver: the probe owns RDY and I2C. */
+&trackball_listener_R { status = "disabled"; };

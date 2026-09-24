@@ -51,3 +51,8 @@ include:
     shield: corcell_r
     artifact-name: Corcell_R-iqs9151-A2-1mm-no-reset-diagnostics
     snippet: corcell-right-slot1-iqs9151-a2 zmk-usb-logging corcell-a2-diagnostics
+  # Isolated bus test: deliberately no cursor input from the right sensor.
+  - board: xiao_ble/nrf52840/zmk
+    shield: corcell_r
+    artifact-name: Corcell_R-iqs9151-A2-RDY-probe-only
+    snippet: corcell-a2-rdy-probe zmk-usb-logging

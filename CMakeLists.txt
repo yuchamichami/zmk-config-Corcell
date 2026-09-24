@@ -17,3 +17,7 @@ target_sources_ifdef(CONFIG_CORCELL_SLEEP_TEST_30S app PRIVATE
 target_sources_ifdef(CONFIG_CORCELL_A2_DIAGNOSTIC_INFO app PRIVATE
   src/status/a2_diagnostic_info.c
 )
+
+target_sources_ifdef(CONFIG_CORCELL_A2_RDY_PROBE app PRIVATE
+  src/status/a2_rdy_probe.c
+)
