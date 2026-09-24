@@ -2,6 +2,7 @@
 #include <dt-bindings/zmk/input_transform.h>
 #include <zephyr/dt-bindings/gpio/gpio.h>
 #include <zephyr/dt-bindings/i2c/i2c.h>
+#include <zephyr/dt-bindings/input/input-event-codes.h>
 #include <input/processors.dtsi>
 
 /* Right FPC: 1 RESET unused (JP1 open), 2 SCL, 3 RDY, 4 SDA, 5 3V3, 6 GND.
@@ -87,4 +88,3 @@
             <&scroll_runtime_input_processor>;
     };
 };
-
