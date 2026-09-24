@@ -51,3 +51,35 @@ include:
     shield: corcell_r
     artifact-name: Corcell_R-iqs9151-A2-1mm-no-reset-diagnostics
     snippet: corcell-right-slot1-iqs9151-a2 zmk-usb-logging corcell-a2-diagnostics
+  # Isolated bus test: deliberately no cursor input from the right sensor.
+  - board: xiao_ble/nrf52840/zmk
+    shield: corcell_r
+    artifact-name: Corcell_R-iqs9151-A2-RDY-probe-only
+    snippet: corcell-a2-rdy-probe zmk-usb-logging
+  # Compare calibration target only, retaining diagnostics and error rejection.
+  - board: xiao_ble/nrf52840/zmk
+    shield: corcell_r
+    artifact-name: Corcell_R-iqs9151-A2-ATI800-diagnostics
+    snippet: corcell-right-slot1-iqs9151-a2 zmk-usb-logging corcell-a2-diagnostics corcell-a2-ati800
+  - board: xiao_ble/nrf52840/zmk
+    shield: corcell_r
+    artifact-name: Corcell_R-iqs9151-A2-ATI700-diagnostics
+    snippet: corcell-right-slot1-iqs9151-a2 zmk-usb-logging corcell-a2-diagnostics corcell-a2-ati700
+  - board: xiao_ble/nrf52840/zmk
+    shield: corcell_r
+    artifact-name: Corcell_R-iqs9151-A2-ATI700-Fine8-diagnostics
+    snippet: corcell-right-slot1-iqs9151-a2 zmk-usb-logging corcell-a2-diagnostics corcell-a2-ati700 corcell-a2-fine8
+  # Measure all electrode base counts before choosing calibration settings.
+  - board: xiao_ble/nrf52840/zmk
+    shield: corcell_r
+    artifact-name: Corcell_R-iqs9151-A2-calibration-survey
+    snippet: corcell-right-slot1-iqs9151-a2 zmk-usb-logging corcell-a2-diagnostics corcell-a2-calibration-survey
+  - board: xiao_ble/nrf52840/zmk
+    shield: corcell_r
+    artifact-name: Corcell_R-iqs9151-A2-frequency-survey
+    snippet: corcell-right-slot1-iqs9151-a2 zmk-usb-logging corcell-a2-diagnostics corcell-a2-calibration-survey corcell-a2-frequency-survey
+  # Pointer-enabled validation of the first board's measured passing profile.
+  - board: xiao_ble/nrf52840/zmk
+    shield: corcell_r
+    artifact-name: Corcell_R-iqs9151-A2-ATI850-Fine6-cursor-test
+    snippet: corcell-right-slot1-iqs9151-a2 zmk-usb-logging corcell-a2-diagnostics corcell-a2-validated850

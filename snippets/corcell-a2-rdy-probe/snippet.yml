@@ -1,0 +1,4 @@
+name: corcell-a2-rdy-probe
+append:
+  EXTRA_CONF_FILE: probe.conf
+  EXTRA_DTC_OVERLAY_FILE: probe.overlay

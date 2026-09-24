@@ -50,3 +50,10 @@ config CORCELL_A2_DIAGNOSTIC_INFO
     help
         Diagnostic-only force-communication read before the sensor driver
         registers its RDY callback. Does not modify the pinned driver.
+
+config CORCELL_A2_RDY_PROBE
+    bool "Isolated A2 RDY and product-ID diagnostic"
+    depends on I2C && GPIO && LOG && !INPUT_IQS9151
+    help
+        Disable normal sensor initialization. Observe RDY edges, then read
+        the product ID once. Does not reset or configure the sensor.

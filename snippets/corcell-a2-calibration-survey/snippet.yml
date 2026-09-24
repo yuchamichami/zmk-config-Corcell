@@ -1,0 +1,3 @@
+name: corcell-a2-calibration-survey
+append:
+  EXTRA_CONF_FILE: survey.conf
