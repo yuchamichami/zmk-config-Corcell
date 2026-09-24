@@ -78,3 +78,8 @@ include:
     shield: corcell_r
     artifact-name: Corcell_R-iqs9151-A2-frequency-survey
     snippet: corcell-right-slot1-iqs9151-a2 zmk-usb-logging corcell-a2-diagnostics corcell-a2-calibration-survey corcell-a2-frequency-survey
+  # Pointer-enabled validation of the first board's measured passing profile.
+  - board: xiao_ble/nrf52840/zmk
+    shield: corcell_r
+    artifact-name: Corcell_R-iqs9151-A2-ATI850-Fine6-cursor-test
+    snippet: corcell-right-slot1-iqs9151-a2 zmk-usb-logging corcell-a2-diagnostics corcell-a2-validated850
