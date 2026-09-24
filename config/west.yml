@@ -24,7 +24,7 @@ manifest:
       revision: fc946760e7f870e512be8fce7a26cc5c004a8663
     - name: zmk-driver-iqs9151
       url: https://github.com/yuchamichami/zmk-driver-iqs9151
-      revision: 11e0b4bf4499b59032eaf4b822ded4e98dc379bf
+      revision: 803651a9e920f54cbc7d27787d7f39c2852e9a48
     - name: zmk-module-ble-management
     - name: zmk-feature-custom-settings
     - name: zmk-module-runtime-input-processor
