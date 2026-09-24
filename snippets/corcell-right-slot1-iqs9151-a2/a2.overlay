@@ -59,7 +59,7 @@
 &trackball_listener_R {
     status = "okay";
     device = <&corcell_a2>;
-    input-processors = <>;
+    /delete-property/ input-processors;
 };
 
 /* Input relayed from the left half. */
