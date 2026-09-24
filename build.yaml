@@ -74,3 +74,7 @@ include:
     shield: corcell_r
     artifact-name: Corcell_R-iqs9151-A2-calibration-survey
     snippet: corcell-right-slot1-iqs9151-a2 zmk-usb-logging corcell-a2-diagnostics corcell-a2-calibration-survey
+  - board: xiao_ble/nrf52840/zmk
+    shield: corcell_r
+    artifact-name: Corcell_R-iqs9151-A2-frequency-survey
+    snippet: corcell-right-slot1-iqs9151-a2 zmk-usb-logging corcell-a2-diagnostics corcell-a2-calibration-survey corcell-a2-frequency-survey
