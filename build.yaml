@@ -61,3 +61,7 @@ include:
     shield: corcell_r
     artifact-name: Corcell_R-iqs9151-A2-ATI800-diagnostics
     snippet: corcell-right-slot1-iqs9151-a2 zmk-usb-logging corcell-a2-diagnostics corcell-a2-ati800
+  - board: xiao_ble/nrf52840/zmk
+    shield: corcell_r
+    artifact-name: Corcell_R-iqs9151-A2-ATI700-diagnostics
+    snippet: corcell-right-slot1-iqs9151-a2 zmk-usb-logging corcell-a2-diagnostics corcell-a2-ati700

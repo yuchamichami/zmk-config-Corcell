@@ -1,0 +1,3 @@
+name: corcell-a2-ati700
+append:
+  EXTRA_CONF_FILE: ati700.conf
