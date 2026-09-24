@@ -1,0 +1,4 @@
+name: corcell-right-slot1-iqs9151-a2
+append:
+  EXTRA_CONF_FILE: a2.conf
+  EXTRA_DTC_OVERLAY_FILE: a2.overlay
