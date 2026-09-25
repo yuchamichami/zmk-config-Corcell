@@ -3,6 +3,12 @@
 
 /* Same slot 1 wiring as the right half; see the right-hand snippet for the
  * FPC pin map and why spi0 has to be disabled. */
+/* Enabling CONFIG_I2C also enables the XIAO's default D4/D5 bus.
+ * This slot uses i2c0; leave P0.04/P0.05 to the existing encoder. */
+&i2c1 {
+    status = "disabled";
+};
+
 &spi0 {
     status = "disabled";
 };

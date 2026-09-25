@@ -19,6 +19,12 @@
  * (both at 0x40003000), so spi0 has to go for this to work. That is fine
  * here: the lenoTP replaces the PAW rather than sitting beside it.
  */
+/* Enabling CONFIG_I2C also enables the XIAO's default D4/D5 bus.
+ * This slot uses i2c0; leave P0.04/P0.05 to the existing encoder. */
+&i2c1 {
+    status = "disabled";
+};
+
 &spi0 {
     status = "disabled";
 };

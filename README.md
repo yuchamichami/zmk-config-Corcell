@@ -27,6 +27,7 @@ lenoTP に置き換えた実験中の版です。一般利用には `main` ま�
   `FPC-diagnostics` はPAWコネクタ用、旧 `BENCH` はXIAO D4/D5直結用で、配線が異なります。
 - nRF52840 の `i2c0` と `spi0` は同一インスタンス（どちらも `0x40003000`）なので、
   snippet 側で `spi0` を無効化しています。PAW3222 との併用はできません。
+  未使用の `i2c1` も無効にし、エンコーダーのP0.04/P0.05を占有しないようにしています。
 - `P0.09` / `P0.10` は NFC ピンですが、`corcell.dtsi` の `nfct-pins-as-gpios` で
   GPIO として使える状態にしてあります。
 - 電池駆動のため `sleep-on-suspend` / `wakeup-on-resume` を有効にしています。
