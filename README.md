@@ -7,20 +7,24 @@ Corcell は、PAW3222 トラックボールと乾電池駆動に対応した ZMK
 lenoTP に置き換えた実験中の版です。一般利用には `main` または `dya-studio` を選んでください。**
 通常版は `main`、DYA Studio 対応版は `dya-studio` ブランチです。
 
-lenoTP モジュールは PAW3222 とピン配置互換なので、スロット 1 のネットを
-そのまま流用します。
+今回の新しい変換FPCを介して、PAW3222用スロット1へlenoTPを接続します。
+以下はコネクタ端子番号です。旧READMEの2〜4番の表記を修正しました。GPIOの割り当て自体は従来と同じです。
 
 | FPC | lenoTP | PAW3222 での役割 | XIAO |
 |---|---|---|---|
-| 1 | NC | NCS | P0.05（RE_B）・未使用 |
-| 2 | SDA | SDIO | `P0.09` |
-| 3 | SCL | SCLK | `P0.10` |
-| 4 | INT | MOTION | `P1.12` |
+| 1 | NC（モジュール側未接続） | NCS | 使用しない |
+| 2 | SCL | SCLK | `P0.10` |
+| 3 | INT | MOTION | `P1.12` |
+| 4 | SDA | SDIO | `P0.09` |
 | 5 | VCC | VCC | 3V3 |
 | 6 | GND | GND | GND |
 
 - ドライバは [`zmk-driver-lenotp`](https://github.com/yuchamichami/zmk-driver-lenotp) です。
-  I2C アドレスは `0x15`、`INT` は `GPIO_ACTIVE_LOW | GPIO_PULL_UP` で受けます。
+  I2C アドレスは `0x15`、`INT` は `GPIO_ACTIVE_LOW` で受けます。
+- 新FPC上の外付けプルアップ（SCL/SDA各4.7kΩ、INT 10kΩ、すべて3.3V）を使い、
+  スロット1の内部プルアップは無効にしています。I2Cは100kHzです。
+- **初回テストは [新FPCの接続・書込み手順](docs/lenotp-fpc-test.md) を参照してください。**
+  `FPC-diagnostics` はPAWコネクタ用、旧 `BENCH` はXIAO D4/D5直結用で、配線が異なります。
 - nRF52840 の `i2c0` と `spi0` は同一インスタンス（どちらも `0x40003000`）なので、
   snippet 側で `spi0` を無効化しています。PAW3222 との併用はできません。
 - `P0.09` / `P0.10` は NFC ピンですが、`corcell.dtsi` の `nfct-pins-as-gpios` で
@@ -138,7 +142,7 @@ PC／ブラウザの対応状況も接続に影響します。検出で迷った
 ## FPC モジュールの切り替え
 
 FPC モジュールは Zephyr/ZMK のスニペットで切り替えます。
-通常の `build.yaml` では PAW3222 snippet だけを指定しているため、生成される UF2 の数は増えません。
+この `lenotp` ブランチの `build.yaml` は左右のlenoTP通常版・FPC診断版と、旧BENCH版・settings_resetを生成します。
 
 - 右手 PAW3222: `corcell-right-slot1-paw3222`
 - 左手 PAW3222: `corcell-left-slot1-paw3222`

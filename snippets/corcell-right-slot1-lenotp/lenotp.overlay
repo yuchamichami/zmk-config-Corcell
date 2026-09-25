@@ -9,9 +9,9 @@
  * PAW's pinout, so the slot's nets are reused as:
  *
  *   FPC 1 NC   <- PAW NCS    (unused here)
- *   FPC 2 SDA  <- PAW SDIO   P0.09
- *   FPC 3 SCL  <- PAW SCLK   P0.10
- *   FPC 4 INT  <- PAW MOTION P1.12
+ *   FPC 2 SCL  <- PAW SCLK   P0.10
+ *   FPC 3 INT  <- PAW MOTION P1.12
+ *   FPC 4 SDA  <- PAW SDIO   P0.09
  *   FPC 5 VCC
  *   FPC 6 GND
  *
@@ -28,7 +28,6 @@
         group1 {
             psels = <NRF_PSEL(TWIM_SDA, 0, 9)>,
                     <NRF_PSEL(TWIM_SCL, 0, 10)>;
-            bias-pull-up;
         };
     };
 
@@ -44,13 +43,8 @@
 &i2c0 {
     compatible = "nordic,nrf-twim";
     status = "okay";
-    /*
-     * 100kHz, not 400kHz. The only pull-ups here are the nRF's internal ones
-     * (~13k), P0.09/P0.10 are the NFC pins with their protection circuit in
-     * the way, and the module hangs off an FPC. The PAW got away with this
-     * because SPI drives push-pull; I2C is open-drain and has to rely on
-     * those pull-ups to bring the line back up.
-     */
+    /* New FPC: SCL/SDA each have an external 4.7k pull-up to 3V3.
+     * Keep the existing conservative 100kHz rate for first bring-up. */
     clock-frequency = <I2C_BITRATE_STANDARD>;
     pinctrl-0 = <&corcell_right_slot1_lenotp_i2c0_default>;
     pinctrl-1 = <&corcell_right_slot1_lenotp_i2c0_sleep>;
@@ -60,7 +54,8 @@
         compatible = "lenotp";
         reg = <0x15>;
         status = "okay";
-        int-gpios = <&gpio1 12 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+        /* External 10k pull-up on the FPC. */
+        int-gpios = <&gpio1 12 GPIO_ACTIVE_LOW>;
 
         /*
          * Without this the driver's init sends no command at all, so a

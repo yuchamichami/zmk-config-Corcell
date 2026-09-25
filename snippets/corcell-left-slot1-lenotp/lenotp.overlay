@@ -12,7 +12,6 @@
         group1 {
             psels = <NRF_PSEL(TWIM_SDA, 0, 9)>,
                     <NRF_PSEL(TWIM_SCL, 0, 10)>;
-            bias-pull-up;
         };
     };
 
@@ -37,7 +36,8 @@
         compatible = "lenotp";
         reg = <0x15>;
         status = "okay";
-        int-gpios = <&gpio1 12 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+        /* External 10k pull-up on the FPC. */
+        int-gpios = <&gpio1 12 GPIO_ACTIVE_LOW>;
 
         wakeup-on-init;
 

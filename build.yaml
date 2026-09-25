@@ -7,6 +7,14 @@ include:
     shield: corcell_l
     artifact-name: Corcell_L-lenotp-xiao_ble_zmk
     snippet: corcell-left-slot1-lenotp
+  - board: xiao_ble/nrf52840/zmk
+    shield: corcell_r
+    artifact-name: Corcell_R-lenotp-FPC-diagnostics-xiao_ble_zmk
+    snippet: corcell-right-slot1-lenotp corcell-lenotp-diagnostics
+  - board: xiao_ble/nrf52840/zmk
+    shield: corcell_l
+    artifact-name: Corcell_L-lenotp-FPC-diagnostics-xiao_ble_zmk
+    snippet: corcell-left-slot1-lenotp corcell-lenotp-diagnostics
   # Bench build: lenoTP on the XIAO's own I2C pads (D4/D5/D7) so a module can
   # be checked by hand without touching the NFC pads on the back.
   - board: xiao_ble/nrf52840/zmk
