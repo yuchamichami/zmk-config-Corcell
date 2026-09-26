@@ -1,3 +1,0 @@
-name: corcell-a2-diagnostics
-append:
-  EXTRA_CONF_FILE: diagnostics.conf

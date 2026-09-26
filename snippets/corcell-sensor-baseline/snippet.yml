@@ -1,3 +1,0 @@
-name: corcell-sensor-baseline
-append:
-  EXTRA_DTC_OVERLAY_FILE: baseline.overlay

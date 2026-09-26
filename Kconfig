@@ -36,17 +36,3 @@ config CORCELL_POWER_ON_LED_MS
     help
         How long the power-on LED stays lit. The pin is disconnected
         afterwards, so this costs nothing once the LED goes dark.
-
-config CORCELL_SLEEP_TEST_30S
-    bool "Temporary 30-second deep sleep test"
-    depends on ZMK_SLEEP && SETTINGS
-    help
-        Override loaded activity timeouts in RAM only for the sleep-test
-        artifact. Stored user settings and normal firmware are unchanged.
-
-config CORCELL_A2_DIAGNOSTIC_INFO
-    bool "Log IQS9151 read-only product version before driver initialization"
-    depends on INPUT_IQS9151 && LOG
-    help
-        Diagnostic-only force-communication read before the sensor driver
-        registers its RDY callback. Does not modify the pinned driver.

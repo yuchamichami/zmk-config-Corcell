@@ -1,4 +1,0 @@
-name: corcell-sensor-off
-append:
-  EXTRA_CONF_FILE: sensor-off.conf
-  EXTRA_DTC_OVERLAY_FILE: sensor-off.overlay
