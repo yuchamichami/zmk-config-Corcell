@@ -8,6 +8,8 @@ FPC スロットに PAW3222 トラックボールを載せています。
 [動画と分解手順](docs/v2-case-disassembly.md)を参照してください。
 ボトムケースとフレームは合わせたまま、トッププレートを外します。
 
+https://github.com/user-attachments/assets/4051cda4-3a6b-4ba5-9c34-13392f8c34de
+
 ## ブランチの選び方
 
 利用者向けは **`main` と `dya-studio`** です。各ブランチの README にセットアップ手順を記載しています。
