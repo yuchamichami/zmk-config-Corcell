@@ -2,7 +2,9 @@
 
 [README](../README.md) に戻る
 
-[分解動画を見る（MP4・約1分36秒）](https://github.com/yuchamichami/zmk-config-Corcell/raw/refs/heads/main/docs/videos/v2-case-disassembly.mp4)
+https://github.com/user-attachments/assets/4051cda4-3a6b-4ba5-9c34-13392f8c34de
+
+[動画を別画面で開く（MP4・約1分36秒）](https://github.com/yuchamichami/zmk-config-Corcell/raw/refs/heads/main/docs/videos/v2-case-disassembly.mp4)
 
 ## 1. R側のトラックボールケースのネジを外す
 

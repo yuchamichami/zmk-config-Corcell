@@ -14,6 +14,8 @@ USB は **右手側** に接続します。左右間の通信には Bluetooth �
 [動画と分解手順](docs/v2-case-disassembly.md)を参照してください。
 ボトムケースとフレームは合わせたまま、トッププレートを外します。
 
+https://github.com/user-attachments/assets/4051cda4-3a6b-4ba5-9c34-13392f8c34de
+
 ## 出荷用ファームの選び方
 
 このブランチで生成するUF2は、次の3ファイルだけです。
