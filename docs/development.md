@@ -40,7 +40,7 @@ FPC モジュールは Zephyr/ZMK のスニペットで切り替えます。
 1. 左右それぞれ、FPC スロットに取り付けるモジュールを決めます。
 2. `build.yaml` の `corcell_r` と `corcell_l` の FPC 用 snippet を選びます。右手側の `studio-rpc-usb-uart` は残します。
 3. 変更を push します。
-4. GitHub Actions の `Build` が完了したら、Artifacts から UF2 をダウンロードします。
+4. GitHub Actions の `Firmware` が完了したら、Artifacts から UF2 をダウンロードします。
 5. `Corcell_R-...uf2` を右手、`Corcell_L-...uf2` を左手に書き込みます。
 
 たとえば右手をエンコーダー、左手を PAW3222 にする場合は次のようにします。
@@ -120,3 +120,7 @@ DYA版では、以下の設定でStudioの機能を有効にしています。
 これはファームの初期配列の変更です。Studioで保存した配列がある個体は、ファームを書き換えるだけでは新しい配列にならない場合があります。既存配列をバックアップしてから、DYA Studioの配列を初期状態へ戻す機能で適用してください（保存したキー割り当ては失われます）。全設定を消す`settings_reset`は通常不要です。
 
 検証メモ（2026-09-18）: macOSのChromeで、OS経由のF16・F17・F18の押下・解放がKeyCheckに記録され、音声再生が始まることを確認しました。Corcell実機からのHID送信は別途確認が必要です。以前のF22〜F24はChromiumのmacOSキー対応表で未割り当てだったため取りやめました。
+
+## ファームの配布
+
+自動公開と手動での再配布は[ファームの配布](firmware-releases.md)を参照してください。

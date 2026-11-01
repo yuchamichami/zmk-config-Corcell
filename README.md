@@ -5,6 +5,22 @@ Corcellは、右手にトラックボールを備えた左右分割キーボー�
 この`dya-studio`ブランチは出荷用のファームです。[DYA Studio](https://studio.dya.cormoran.works/)でキー配列やボールの感度を変更できます。
 Studioを使わない[通常版はmain](https://github.com/yuchamichami/zmk-config-Corcell/tree/main)にあります。
 
+## ファームのダウンロード
+
+<!-- firmware-downloads:start -->
+[左右まとめてダウンロード（ZIP）](https://github.com/yuchamichami/zmk-config-Corcell/releases/download/firmware-dya-studio-41304639786-1/Corcell-dya-studio-LR.zip)
+
+| 個別ダウンロード | 用途 |
+| --- | --- |
+| [左手用（L）](https://github.com/yuchamichami/zmk-config-Corcell/releases/download/firmware-dya-studio-41304639786-1/Corcell_L-dya-studio-xiao_ble_zmk.uf2) | 左に書き込むUF2 |
+| [右手用（R）](https://github.com/yuchamichami/zmk-config-Corcell/releases/download/firmware-dya-studio-41304639786-1/Corcell_R-dya-studio-xiao_ble_zmk.uf2) | 右に書き込むUF2 |
+| [設定リセット用](https://github.com/yuchamichami/zmk-config-Corcell/releases/download/firmware-dya-studio-41304639786-1/settings_reset-dya-studio-xiao_ble_zmk.uf2) | ペアリング・保存した設定をすべて消す場合のみ |
+
+配布元：2026-11-01 / `a72dde5` · [配布ファイルの詳細](https://github.com/yuchamichami/zmk-config-Corcell/releases/tag/firmware-dya-studio-41304639786-1)
+<!-- firmware-downloads:end -->
+
+GitHubへのログインは不要です。ZIPには左右のUF2が入っています。通常の更新では設定リセット用は使いません。
+
 ## 接続する
 
 USBは右手側につなぎます。左手の入力は右手へBluetoothで送るため、USBで使うときも左手には電池を入れて電源を入れてください。
@@ -47,19 +63,12 @@ BluetoothでStudioにつなぐ場合は、先にOSとペアリングし、レイ
 
 ## ファームを更新する
 
-[GitHub Actionsのdya-studioビルド](https://github.com/yuchamichami/zmk-config-Corcell/actions/workflows/build.yml?query=branch%3Adya-studio)から、成功したBuildのArtifactsにある`firmware`をダウンロードして展開します。ダウンロードにはGitHubへのログインが必要です。
-
-| ファイル | 書き込む側 |
-| --- | --- |
-| `Corcell_L-dya-studio-xiao_ble_zmk.uf2` | 左 |
-| `Corcell_R-dya-studio-xiao_ble_zmk.uf2` | 右 |
-| `settings_reset-dya-studio-xiao_ble_zmk.uf2` | 設定をすべて消すときだけ使用 |
-
-書き込みは[ファーム更新の手順](docs/connection-guide.md#8-ファーム更新)に沿って、左右1台ずつ行います。通常の更新では保存済みの配列とペアリングを引き継ぐので、`settings_reset`は使いません。
+[上のダウンロード](#ファームのダウンロード)から左右のZIPを保存し、展開します。
+[ファーム更新の手順](docs/connection-guide.md#8-ファーム更新)に沿って、左右1台ずつ書き込んでください。通常の更新では保存済みの配列とペアリングを引き継ぎます。
 
 ### スリープ不具合の修正版へ更新する
 
-2026年11月1日に、左手がスリープから起きない不具合と、左右共通のスリープ処理を修正しました。[修正版のビルド](https://github.com/yuchamichami/zmk-config-Corcell/actions/runs/41304639786)から、左右両方を更新してください。
+2026年11月1日に、左手がスリープから起きない不具合と、左右共通のスリープ処理を修正しました。[上のダウンロード](#ファームのダウンロード)から、左右両方を更新してください。
 
 更新後は左右のUSBを外し、電池で15分以上操作せずに待ちます。左右それぞれのキーを押してLEDが点き、数秒後に文字入力と右のボールが戻るか確認してください。最初の1打は復帰に使われ、文字として出ないことがあります。
 Studioでスリープ時間を変更済みなら、その時間に合わせて待ってください。

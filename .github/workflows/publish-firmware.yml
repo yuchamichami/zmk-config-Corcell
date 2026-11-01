@@ -1,0 +1,57 @@
+name: Publish firmware downloads
+
+on:
+  workflow_run:
+    workflows: ["Firmware", ".github/workflows/build.yml"]
+    types: [completed]
+    branches: [main, dya-studio]
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: Successful firmware build run ID
+        required: true
+        type: string
+      branch:
+        description: Destination README (firmware source must match this branch)
+        required: true
+        type: choice
+        options: [dya-studio, main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: publish-firmware-${{ github.event.workflow_run.head_branch || inputs.branch }}
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: >-
+      github.repository == 'yuchamichami/zmk-config-Corcell' &&
+      (github.event_name == 'workflow_dispatch' ||
+       (github.event.workflow_run.conclusion == 'success' &&
+        github.event.workflow_run.head_repository.full_name == github.repository &&
+        (github.event.workflow_run.event == 'push' || github.event.workflow_run.event == 'workflow_dispatch')))
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: write
+      actions: read
+    steps:
+      # Always execute the trusted default-branch publisher, not code from the build artifact.
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: main
+          persist-credentials: false
+      - name: Check publishing rules
+        run: python3 -m unittest discover -s tests -v
+      - name: Publish UF2 files and update README
+        env:
+          GH_TOKEN: ${{ github.token }}
+          FIRMWARE_RUN_ID: ${{ github.event.workflow_run.id || inputs.run_id }}
+          FIRMWARE_BRANCH: ${{ github.event.workflow_run.head_branch || inputs.branch }}
+        run: >-
+          python3 scripts/publish_firmware.py
+          --run-id "$FIRMWARE_RUN_ID"
+          --branch "$FIRMWARE_BRANCH"
+          --work-dir "$RUNNER_TEMP/corcell-firmware"

@@ -158,8 +158,8 @@ USB ケーブルだけで左右間を有線接続する構成ではありませ�
 
 ## 8. ファーム更新
 
-1. [GitHub Actions](https://github.com/yuchamichami/zmk-config-Corcell/actions/workflows/build.yml) で dya-studio の対象コミットに対する成功した Build を開きます。
-2. Artifacts の `firmware` をダウンロードし、ZIP を展開します。GitHub へのログインが必要な場合があります。
+1. [READMEのダウンロード](../README.md#ファームのダウンロード)を開きます。
+2. 左右用のZIPをダウンロードし、展開します。GitHubへのログインは不要です。
 3. 保存済みの配列や設定を記録します。Studio でエクスポートできる項目は退避し、ほかは画面や数値を控えます。
 4. 書き込む側をデータ対応 USB ケーブルで接続し、XIAO のリセットボタンを素早く 2 回押します。
 5. 出てきた USB ドライブに、その側の UF2 を 1 ファイルだけコピーします。左右と settings_reset をまとめてコピーしません。完了後にドライブが消え、再起動します。
