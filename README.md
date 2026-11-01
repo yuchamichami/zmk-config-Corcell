@@ -8,6 +8,7 @@ Corcellは、右手にトラックボールを備えた左右分割キーボー�
 ## ファームのダウンロード
 
 <!-- firmware-downloads:start -->
+<!-- firmware-build: 41304609549 1 -->
 [左右まとめてダウンロード（ZIP）](https://github.com/yuchamichami/zmk-config-Corcell/releases/download/firmware-main-41304609549-1/Corcell-main-LR.zip)
 
 | 個別ダウンロード | 用途 |
