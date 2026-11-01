@@ -11,6 +11,17 @@
     nfct-pins-as-gpios;
 };
 
+/*
+ * The XIAO board file enables spi2 on P1.13/P1.14/P1.15, the same pins the
+ * charlieplex matrix and its interrupt line use. Kscan wins at boot because
+ * it initialises later, but before deep sleep the SPI driver is suspended
+ * after kscan is skipped as a wakeup source, and its sleep pinctrl state
+ * clears the SENSE on P1.13 - so a keypress could not wake the half.
+ */
+&spi2 {
+    status = "disabled";
+};
+
 / {
     chosen {
         zmk,physical-layout = &default_layout;
