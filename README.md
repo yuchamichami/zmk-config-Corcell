@@ -8,6 +8,7 @@ Studioを使わない[通常版はmain](https://github.com/yuchamichami/zmk-conf
 ## ファームのダウンロード
 
 <!-- firmware-downloads:start -->
+<!-- firmware-build: 41304639786 1 -->
 [左右まとめてダウンロード（ZIP）](https://github.com/yuchamichami/zmk-config-Corcell/releases/download/firmware-dya-studio-41304639786-1/Corcell-dya-studio-LR.zip)
 
 | 個別ダウンロード | 用途 |
