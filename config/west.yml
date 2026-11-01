@@ -28,7 +28,8 @@ manifest:
       import:
         file: app/west.yml
     - name: zephyr
-      revision: v4.1.0+zmk-fixes+nrf-half-duplex-uart
+      # Includes the pm_device_slots fix needed when ZMK suspends devices without CONFIG_PM.
+      revision: 63363d92c475ad203b35e9047cef7ecd8706a6fc
       clone-depth: 1
       import:
         name-blocklist:
