@@ -1,11 +1,24 @@
-on: [push, pull_request, workflow_dispatch]
+name: Firmware
+
+on:
+  push:
+    branches: ['**']
+    paths-ignore:
+      - '**/*.md'
+      - 'docs/**'
+      - 'keymap-drawer/**'
+      - '.github/workflows/draw.yml'
+  pull_request:
+    paths-ignore:
+      - '**/*.md'
+      - 'docs/**'
+      - 'keymap-drawer/**'
+      - '.github/workflows/draw.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
   build:
     uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v0.3
-
-# on: [workflow_dispatch]
-
-# jobs:
-#   build:
-#     uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main

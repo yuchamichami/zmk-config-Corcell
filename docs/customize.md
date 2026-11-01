@@ -58,3 +58,7 @@ include:
 
 - `CONFIG_CORCELL_POWER_ON_LED_MS` — 点灯時間。既定 2000、範囲 100〜10000 ms
 - `CONFIG_CORCELL_POWER_ON_LED=n` — 無効化
+
+## ファームの配布
+
+自動公開と手動での再配布は[ファームの配布](firmware-releases.md)を参照してください。
